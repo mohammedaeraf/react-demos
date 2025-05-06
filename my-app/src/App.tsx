@@ -1,11 +1,11 @@
-import Greet from "./Greet";
+import UserInfo from "./UserInfo";
 
 function App() {
   // JSX - JavaScript XML
   return (
     <>
-      <h1>This is the App Component</h1>
-      <Greet />
+      <h1>App Component</h1>
+      <UserInfo />
     </>
   );
 }
