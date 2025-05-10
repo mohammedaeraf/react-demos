@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function CourseList() {
   // expected to return markup (HTML/CSS Code)
   const courses = [
@@ -30,15 +32,18 @@ function CourseList() {
     // "Advanced Excel",
   ];
 
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     <>
       <h2 className="text-primary">Course List</h2>
       <ul className="list-group">
-        {courses.map((course) => (
-          <li className="list-group-item" key={course.id}>
+        {courses.map((course, index) => (
+          <li className={selectedIndex == index ? "list-group-item active" : "list-group-item"}
+            key={course.id} onClick={() => setSelectedIndex(index)}>
             {course.title} - {course.duration}
             <br />
-            <span className="small text-danger">{course.description}</span>
+            <span className="small text-info">{course.description}</span>
           </li>
         ))}
       </ul>
