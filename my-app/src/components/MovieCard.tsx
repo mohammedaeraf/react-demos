@@ -1,21 +1,29 @@
+// Define the props interface for the MovieCard component
 interface MovieProps {
-  name: string;
-  rating: number;
-  actors: string[];
-  isRecommended: boolean;
+  name: string;           // The name of the movie
+  rating: number;         // The movie's rating out of 10
+  actors: string[];       // Array of actors in the movie
+  isRecommended: boolean; // Whether the movie is recommended
 }
 
-const MovieCard = ({ name, rating, actors, isRecommended }: MovieProps) => {
+// Functional component to display movie information
+const MovieCard = (props: MovieProps) => {
   return (
     <div>
-      <h2>{name}</h2>
-      <p>Rating: {rating}/10</p>
+      {/* Display the movie name */}
+      <h2>{props.name}</h2>
+      {/* Display the movie rating */}
+      <p>Rating: {props.rating}/10</p>
+      {/* Label for the cast list */}
       <p>Cast:</p>
       <ul>
-        {actors.map((actor, i) => <li key={i}>{actor}</li>)}
+        {/* Iterate over the actors array and render each actor as a list item */}
+        {props.actors.map((actor, i) => <li key={i}>{actor}</li>)}
       </ul>
-      <p>{isRecommended ? "Highly Recommended!" : "Optional Watch"}</p>
+      {/* Conditionally display recommendation text based on isRecommended */}
+      <p>{props.isRecommended ? "Highly Recommended!" : "Optional Watch"}</p>
     </div>
   );
 };
+
 export default MovieCard;

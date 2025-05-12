@@ -5,14 +5,14 @@ interface BookProps {
   genres: string[];
 }
 
-const BookInfo = ({ title, author, year, genres }: BookProps) => {
+const BookInfo = (props: BookProps) => {
   return (
     <div>
-      <h3>{title} ({year})</h3>
-      <p>Author: {author}</p>
+      <h3>{props.title} ({props.year})</h3>
+      <p>Author: {props.author}</p>
       <p>Genres:</p>
       <ul>
-        {genres.map((g, idx) => (
+        {props.genres.map((g, idx) => (
           <li key={idx}>{g}</li>
         ))}
       </ul>
