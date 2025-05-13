@@ -1,53 +1,41 @@
-import { useState } from "react";
+import CourseCard from "./CourseCard";
+// import { Course } from "../types/Course";
 
-function CourseList() {
-  // expected to return markup (HTML/CSS Code)
+const CourseList = () => {
   const courses = [
     {
-      id: "GD",
-      title: "Graphic Design with Canva",
-      duration: "30 days",
-      description:
-        "Graphic Design with Canva.. Graphic Design with Canva... Graphic Design with Canva",
+      name: "Web Design",
+      instructor: "Alice Johnson",
+      duration: 20,
+      topics: ["HTML", "CSS", "Bootstrap"],
     },
     {
-      id: "WD",
-      title: "Advanced Web Design",
-      duration: "60 days",
-      description:
-        "Advanced Web Design... Advanced Web Design.. Advanced Web Design",
+      name: "React Fundamentals",
+      instructor: "Bob Smith",
+      duration: 25,
+      topics: ["JSX", "Components", "Hooks"],
     },
     {
-      id: "REACT",
-      title: "Frontend Development using React and TypeScript",
-      duration: "60 days",
-      description:
-        "Frontend Development using React and TypeScript.. Frontend Development using React and TypeScriptFrontend Development using React and TypeScript",
+      name: "Full Stack with MERN",
+      instructor: "Charlie Davis",
+      duration: 40,
+      topics: ["MongoDB", "Express", "React", "Node.js"],
     },
-
-    // "Graphic Design with Canva",
-    // "Advanced Web Design",
-    // "Frontend Development using React and TypeScript",
-    // "Backend Development using Java and Spring Boot",
-    // "Advanced Excel",
   ];
 
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-
   return (
-    <>
-      <h2 className="text-primary">Course List</h2>
-      <ul className="list-group">
-        {courses.map((course, index) => (
-          <li className={selectedIndex == index ? "list-group-item active" : "list-group-item"}
-            key={course.id} onClick={() => setSelectedIndex(index)}>
-            {course.title} - {course.duration}
-            <br />
-            <span className="small text-info">{course.description}</span>
-          </li>
-        ))}
-      </ul>
-    </>
+    <div className="border border-warning m-3 p-3">
+      <h2>Available Courses</h2>
+      {courses.map((course) => (
+        <CourseCard
+          title={course.name}
+          instructor={course.instructor}
+          duration={course.duration}
+          topics={course.topics}
+        />
+      ))}
+    </div>
   );
-}
+};
+
 export default CourseList;

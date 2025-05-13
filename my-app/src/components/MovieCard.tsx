@@ -9,7 +9,7 @@ interface MovieProps {
 // Functional component to display movie information
 const MovieCard = (props: MovieProps) => {
   return (
-    <div>
+    <div  className="border border-secondary m-3 p-3">
       {/* Display the movie name */}
       <h2>{props.name}</h2>
       {/* Display the movie rating */}

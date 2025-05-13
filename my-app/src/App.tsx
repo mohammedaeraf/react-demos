@@ -9,10 +9,6 @@ import NameInput from "./components/NameInput";
 import ToggleSwitch from "./components/ToggleSwitch";
 
 function App() {
-  // JSX - JavaScript XML
-  // const x: number = 100;
-  // const y: number = 0;
-
   // Props for CourseListSimple Component
   // const courses: string[] =
   //   [
@@ -23,21 +19,11 @@ function App() {
 
   // const title: string = "Simple Course List";
 
-
   return (
-    <>
+    <div className="container my-5">
       {/* <CourseListSimple title={title} courses={courses}></CourseListSimple> */}
 
-      <GreetUser name="Isa" />
-
-      <hr />
-
-      <CourseCard
-        title="Graphic Design with Canva"
-        instructor="John Doe"
-        duration={5}
-        topics={["Design Principles", "Color Theory", "Typography"]}
-      />
+      <GreetUser name="Abdul Rehman" message="Welcome to our React App" />
 
       <hr />
 
@@ -56,7 +42,9 @@ function App() {
         isRecommended={true}
         actors={["Leonardo DiCaprio, Joseph"]}
       />
-    </>
+
+      <CourseList />
+    </div>
   );
 }
 

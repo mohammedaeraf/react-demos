@@ -1,15 +1,15 @@
 // Define the props interface for the CourseCard component
 interface CourseProps {
-  title: string;        // The title of the course
-  instructor: string;   // The instructor's name
-  duration: number;     // Duration of the course in hours
-  topics: string[];     // Array of topics covered in the course
+  title: string; // The title of the course
+  instructor: string; // The instructor's name
+  duration: number; // Duration of the course in hours
+  topics: string[]; // Array of topics covered in the course
 }
 
 // Functional component to display course information
 const CourseCard = (props: CourseProps) => {
   return (
-    <div>
+    <div className="border border-info  m-3 p-3">
       {/* Display the course title */}
       <h2>{props.title}</h2>
       {/* Display the instructor's name */}

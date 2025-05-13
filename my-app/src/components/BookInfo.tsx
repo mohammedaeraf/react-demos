@@ -7,13 +7,15 @@ interface BookProps {
 
 const BookInfo = (props: BookProps) => {
   return (
-    <div>
-      <h3>{props.title} ({props.year})</h3>
+    <div className="border border-danger m-3 p-3">
+      <h3>
+        {props.title} ({props.year})
+      </h3>
       <p>Author: {props.author}</p>
       <p>Genres:</p>
       <ul>
-        {props.genres.map((g, idx) => (
-          <li key={idx}>{g}</li>
+        {props.genres.map((genre) => (
+          <li>{genre}</li>
         ))}
       </ul>
     </div>
