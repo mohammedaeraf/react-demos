@@ -1,5 +1,4 @@
 import CourseCard from "./CourseCard";
-// import { Course } from "../types/Course";
 
 const CourseList = () => {
   const courses = [
