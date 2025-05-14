@@ -6,21 +6,18 @@ import CourseList from "./components/CourseList";
 
 function App() {
   return (
+    <BrowserRouter>
+      <div className="container my-5">
+        <Link to="/">Home</Link> | <Link to="/about">About</Link> |
+        <Link to="/contact">Contact</Link>
+      </div>
 
-    <CourseList />
-
-    // <BrowserRouter>
-    //   <div className="container my-5">
-    //     <Link to="/">Home</Link> | <Link to="/about">About</Link> |
-    //     <Link to="/contact">Contact</Link>
-    //   </div>
-
-    //   <Routes>
-    //     <Route path="/" element={<Home />}></Route>
-    //     <Route path="/about" element={<About />}></Route>
-    //     <Route path="/contact" element={<Contact />}></Route>
-    //   </Routes>
-    // </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
