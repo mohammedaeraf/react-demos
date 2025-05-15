@@ -1,23 +1,24 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {  Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import CourseList from "./components/CourseList";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="container my-5">
-        <Link to="/">Home</Link> | <Link to="/about">About</Link> |
-        <Link to="/contact">Contact</Link>
-      </div>
+    <div className="container-fluid">
+      <Navbar />
+      <main className="container my-4 fullPage">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<CourseList />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
 
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-      </Routes>
-    </BrowserRouter>
   );
 }
 
