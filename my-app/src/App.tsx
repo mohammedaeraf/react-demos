@@ -5,6 +5,8 @@ import CourseList from "./components/CourseList";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PostList from "./components/PostList";
+import PostListCard from "./components/PostListCard";
+import Counter from "./components/Counter";
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<CourseList />} />
-          <Route path="/posts" element={<PostList />} />
+          <Route path="/posts" element={<PostListCard />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/counter" element={<Counter title="Counter" initialVal={0}/>} />
+
         </Routes>
       </main>
       <Footer />
