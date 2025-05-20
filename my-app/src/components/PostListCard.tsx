@@ -10,16 +10,47 @@ interface Post {
 
 const PostListCard = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // assume this takes 2-5 secs to get data and load in posts state variable
   const fetchPosts = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const data: Post[] = await response.json();
-    setPosts(data);
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/postssss"
+      );
+      if (!response.ok) {
+        throw new Error("Error occured while calling the API");
+      }
+      const data: Post[] = await response.json();
+      setPosts(data);
+      setLoading(false);
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="container text-center">
+        <h1 className="text-danger">Loading... </h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container text-center">
+        <h1 className="text-danger fw-bold">{error}</h1>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -28,11 +59,12 @@ const PostListCard = () => {
       <div className="row">
         {posts.map((post) => (
           <div className="col-md-3 mb-3">
-            <div className="card h-100" key={post.id}>
+            <div className="card h-100 d-flex flex-column" key={post.id}>
               <img src={`https://picsum.photos/id/${post.id}/300`} alt="" />
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 <h4 className="card-title text-danger">{post.title}</h4>
                 <p className="card-text text-secondary">{post.body}</p>
+                <div className="flex-grow-1">&nbsp;</div>
                 <a href="" className="btn btn-primary">
                   View Entire Post
                 </a>
