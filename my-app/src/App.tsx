@@ -9,6 +9,7 @@ import PostListCard from "./components/PostListCard";
 import Counter from "./components/Counter";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
+import RecipeListPagination from "./components/RecipeListPagination";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<CourseList />} />
           <Route path="/posts" element={<PostListCard />} />
-          <Route path="/recipes" element={<RecipeList />} />
+          <Route path="/recipes" element={<RecipeListPagination />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
           <Route
             path="/counter"
