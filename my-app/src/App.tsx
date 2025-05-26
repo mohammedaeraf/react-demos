@@ -11,6 +11,8 @@ import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 import RecipeListPagination from "./components/RecipeListPagination";
 import RecipeListPaginationServer from "./components/RecipeListPaginationServer";
+import NameInput from "./components/NameInput";
+import RecipeSearch from "./components/RecipeSearch";
 
 function App() {
   return (
@@ -21,13 +23,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<CourseList />} />
           <Route path="/posts" element={<PostListCard />} />
-          <Route path="/recipes" element={<RecipeListPaginationServer />} />
+          <Route path="/recipes" element={<RecipeSearch />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
           <Route
             path="/counter"
             element={<Counter title="Counter" initialVal={0} />}
           />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/name-input" element={<NameInput />} />
+
         </Routes>
       </main>
       <Footer />
