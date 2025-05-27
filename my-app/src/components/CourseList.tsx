@@ -1,53 +1,73 @@
-import CourseCard from "./CourseCard";
-import { type Course } from "../types/Course";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+}
 
 const CourseList = () => {
-  const courses: Course[] = [
-    {
-      title: "Web Design",
-      instructor: "Alice Johnson",
-      duration: 20,
-      imageUrl: "/web-design.jpg",
-      topics: ["HTML", "CSS", "Bootstrap"],
-    },
-    {
-      title: "React Fundamentals",
-      instructor: "Bob Smith",
-      duration: 25,
-      imageUrl: "/reactjs.webp",
-      topics: ["JSX", "Components", "Hooks"],
-    },
-    {
-      title: "Full Stack with MERN",
-      instructor: "Charlie Davis",
-      duration: 40,
-      imageUrl: "/mern.png",
-      topics: ["MongoDB", "Express", "React", "Node.js"],
-    },
-    {
-      title: "Python for Beginners",
-      instructor: "Jonathan Doe",
-      duration: 25,
-      imageUrl: "/python.webp",
+  const API_URL: string = "https://67a75555203008941f674e2f.mockapi.io/courses";
 
-      topics: ["Loops", "Arrays", "Functions"],
-    },
-  ];
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  const fetchCourses = async () => {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setCourses(data);
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const deleteCourse = async (id: number) => {
+    const deleteUrl = `${API_URL}/${id}`;
+    await fetch(deleteUrl, { method: "DELETE" });
+    fetchCourses();
+  };
 
   return (
-    <div className="container">
-      <h2 className="text-secondary my-5">Our Courses</h2>
-      <div className="row">
-        {courses.map((course) => (
-          <CourseCard
-            name={course.title}
-            instructor={course.instructor}
-            duration={course.duration}
-            topics={course.topics}
-            imageUrl={course.imageUrl}
-          />
-        ))}
-      </div>
+    <div id="container">
+      <h1 className="text-danger">Course List</h1>
+      <Link to={`/add-course`} className="btn btn-primary my-3">
+        <i className="bi-plus-circle me-2"></i>
+        Add Course
+      </Link>
+      <table className="table table-striped table-hover">
+        <thead>
+          <tr className="table-dark">
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses.map((course) => (
+            <tr>
+              <th scope="row">{course.id}</th>
+              <td>{course.title}</td>
+              <td>{course.description}</td>
+              <td>
+                <Link
+                  to={`/edit-course/${course.id}`}
+                  className="btn btn-warning me-3"
+                >
+                  <i className="bi-pencil-square me-2"></i>Edit
+                </Link>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteCourse(course.id)}
+                >
+                  <i className="bi-trash me-2"></i> Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -13,6 +13,8 @@ import RecipeListPagination from "./components/RecipeListPagination";
 import RecipeListPaginationServer from "./components/RecipeListPaginationServer";
 import NameInput from "./components/NameInput";
 import RecipeSearch from "./components/RecipeSearch";
+import CourseEdit from "./components/CourseEdit";
+import CourseAdd from "./components/CourseAdd";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<CourseList />} />
+          <Route path="/edit-course/:id" element={<CourseEdit />} />
+          <Route path="/add-course" element={<CourseAdd />} />
           <Route path="/posts" element={<PostListCard />} />
           <Route path="/recipes" element={<RecipeSearch />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
@@ -31,7 +35,6 @@ function App() {
           />
           <Route path="/contact" element={<Contact />} />
           <Route path="/name-input" element={<NameInput />} />
-
         </Routes>
       </main>
       <Footer />
