@@ -38,8 +38,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact" className="nav-link">
-                Contact
+              <Link to="/register" className="nav-link">
+                Register
               </Link>
             </li>
           </ul>
