@@ -21,6 +21,6 @@ The useReducer hook in React is an alternative to useState for managing complex 
 * When state transitions are complex or depend on the previous state.  
 * When you want to centralize state update logic in a single place. 
 
-**Conclusion**
+**Conclusion:**  
 useReducer is a powerful tool for managing complex state in React, offering a more structured approach than useState for intricate state logic.
 
