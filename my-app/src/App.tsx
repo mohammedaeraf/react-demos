@@ -16,6 +16,7 @@ import RecipeSearch from "./components/RecipeSearch";
 import CourseEdit from "./components/CourseEdit";
 import CourseAdd from "./components/CourseAdd";
 import RegisterUser from "./components/RegisterUser";
+import CounterUsingReducer from "./components/CounterUsingReducer";
 
 function App() {
   return (
@@ -30,14 +31,15 @@ function App() {
           <Route path="/posts" element={<PostListCard />} />
           <Route path="/recipes" element={<RecipeSearch />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
-          <Route
+          {/* <Route
             path="/counter"
             element={<Counter title="Counter" initialVal={0} />}
-          />
+          /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<RegisterUser />} />
 
           <Route path="/name-input" element={<NameInput />} />
+          <Route path="/counter" element={<CounterUsingReducer />} />
         </Routes>
       </main>
       <Footer />
