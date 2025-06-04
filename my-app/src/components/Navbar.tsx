@@ -47,6 +47,11 @@ const Navbar = () => {
                 Counter
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/todo" className="nav-link">
+                Todo
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

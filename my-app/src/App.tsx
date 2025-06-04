@@ -17,6 +17,7 @@ import CourseEdit from "./components/CourseEdit";
 import CourseAdd from "./components/CourseAdd";
 import RegisterUser from "./components/RegisterUser";
 import CounterUsingReducer from "./components/CounterUsingReducer";
+import TodoListReducer from "./components/TodoListReducer";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
 
           <Route path="/name-input" element={<NameInput />} />
           <Route path="/counter" element={<CounterUsingReducer />} />
+          <Route path="/todo" element={<TodoListReducer />} />
         </Routes>
       </main>
       <Footer />

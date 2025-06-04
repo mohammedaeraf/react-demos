@@ -1,0 +1,120 @@
+import { useReducer, useState } from "react";
+
+// Define the shape of a todo item
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
+
+// Define the possible actions for the reducer
+type Action =
+  | { type: "add"; text: string }
+  | { type: "toggle"; id: number }
+  | { type: "remove"; id: number };
+
+// Reducer function to manage the todo list state
+function todoReducer(state: Todo[], action: Action): Todo[] {
+  switch (action.type) {
+    case "add":
+      // Add a new todo with a unique id
+      return [
+        ...state,
+        {
+          id: Date.now(),
+          text: action.text,
+          completed: false,
+        },
+      ];
+    case "toggle":
+      // Toggle the completed status of the todo with the given id
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+      );
+    case "remove":
+      // Remove the todo with the given id
+      return state.filter((todo) => todo.id !== action.id);
+    default:
+      return state;
+  }
+}
+
+const TodoListReducer = () => {
+  // useReducer hook to manage the todo list
+  const [todos, dispatch] = useReducer(todoReducer, []);
+  // State for the new todo input
+  const [input, setInput] = useState<string>("");
+
+  // Handler for adding a new todo
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = input.trim();
+    if (trimmed) {
+      dispatch({ type: "add", text: trimmed });
+      setInput("");
+    }
+  };
+
+  return (
+    <div className="container mt-4">
+      <h2 className="mb-4 text-primary">Todo List Manager (useReducer)</h2>
+      {/* Input and Add button */}
+      <form className="d-flex mb-3" onSubmit={handleAdd}>
+        <input
+          className="form-control me-2"
+          type="text"
+          placeholder="Add a new todo..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button className="btn btn-success" type="submit">
+          Add
+        </button>
+      </form>
+
+      {/* Show message if no todos */}
+      {todos.length === 0 && (
+        <div className="alert alert-info">No todos yet. Add one above!</div>
+      )}
+
+      {/* Todo list */}
+      <ul className="list-group">
+        {todos.map((todo) => (
+          <li
+            key={todo.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+                color: todo.completed ? "#888" : "#222",
+              }}
+            >
+              {todo.text}
+            </span>
+            <div>
+              {/* Toggle completion */}
+              <button
+                className={`btn btn-sm me-2 ${
+                  todo.completed ? "btn-secondary" : "btn-outline-secondary"
+                }`}
+                onClick={() => dispatch({ type: "toggle", id: todo.id })}
+              >
+                {todo.completed ? "Undo" : "Complete"}
+              </button>
+              {/* Remove todo */}
+              <button
+                className="btn btn-sm btn-danger"
+                onClick={() => dispatch({ type: "remove", id: todo.id })}
+              >
+                Remove
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoListReducer;
