@@ -48,9 +48,8 @@ const TodoListReducer = () => {
   // Handler for adding a new todo
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-    const trimmed = input.trim();
-    if (trimmed) {
-      dispatch({ type: "add", text: trimmed });
+    if (input) {
+      dispatch({ type: "add", text: input });
       setInput("");
     }
   };
