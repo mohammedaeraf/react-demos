@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
 const Contact = () => {
-  
   return (
     <div className="container mt-5">
       <h2>Contact Us</h2>
