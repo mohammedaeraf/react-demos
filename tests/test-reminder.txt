@@ -1,0 +1,22 @@
+🌟 *Gentle Reminder* 🌟
+
+📝 *Final Theory Test – Frontend React Course*
+📅 *Today at 5:00 PM* – *Thursday, 17th July 2025*
+
+📌 *Test Format:*
+• 50 MCQs
+• 4 marks per question
+• Total: 200 marks
+• Passing Marks: 120
+• Duration: 40 mins
+• You can appear from *home* 🏠 or *academy* 🏫
+
+📘 *Sample Questions:*
+👉 [https://github.com/mohammedaeraf/react-demos/blob/master/tests/sample-test-questions.md](https://github.com/mohammedaeraf/react-demos/blob/master/tests/sample-test-questions.md)
+
+📚 *Notes & Tutorials:*
+📌 JavaScript ➡️ [https://github.com/mohammedaeraf/js-training/tree/master/notes](https://github.com/mohammedaeraf/js-training/tree/master/notes)
+📌 TypeScript ➡️ [https://github.com/mohammedaeraf/ts-training/tree/master/notes](https://github.com/mohammedaeraf/ts-training/tree/master/notes)
+📌 React ➡️ [https://github.com/mohammedaeraf/react-demos/tree/master/notes](https://github.com/mohammedaeraf/react-demos/tree/master/notes)
+
+🧠 *All the best! You've got this!* 🚀
